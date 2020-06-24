@@ -1,0 +1,52 @@
+* {
+	font-family: Verdana, Arial, Geneva, Arial Black;
+}
+
+header {
+	background-color: white;
+	padding: 20px;
+	color: red;
+	text-align: center;
+}
+
+body {
+	background-color: grey;
+}
+
+#answer {
+	font-size: 50px;
+}
+
+.mistakes {
+	text-align: right;
+}
+
+#statement {
+	text-align: center;
+}
+
+.game {
+	text-align: center;
+}
+
+#myCanvas {
+	background: #ffffff;
+	border: 1px solid #000000;
+	text-align: center;
+}
+
+table {
+	margin-left:auto; 
+    margin-right:auto;
+}
+tr td {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+footer {
+	background-color: white;
+	text-align: center;
+
+}
