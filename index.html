@@ -12,13 +12,15 @@
 	<header>
 		<h1> Hangman! </h1>
 	</header>
-	<div ="mistakes"> 
+	<div id="mistakes"> 
 		<p> Incorrect guesses:  </p>
 	</div>
 	<div class="game">
 		<p id="statement">  Guess the word! </p> 
 		<canvas id="myCanvas" width="500" height="500"></canvas>
-		<p id="answer"> {{The word attempts to be placed here}} </p>
+
+		<h4 id="lose"></h4>
+		<p id="answer"></p>
 		
 		<div class="attempts">
 			<div id="underline-1">
@@ -70,7 +72,6 @@
 	</div>
 
 	<footer>
-		<p> {{The keyboard will go here}} </p>	
 		<div class="keyboard">
 		<table>
 			<tr>
