@@ -53,165 +53,6 @@ canvas.beginPath(); // Crossbar - bottom line
 	canvas.stroke();
 
 
-// Hangman game
-var word_options = ["hunter","satellites","trap","acres","poetry","calm","shallow","monkey","rocky","grabbed","swung","tobacco","rhyme","occasionally","wealth","species","claws","philadelphia","brick","adult","depth","treated","breeze","spin","martin","facing","customs","floating","essential","discussion","coach","advice","contrast","rubbed","zoo","arrangement","canal","border","policeman","wolf","image","finest","pennsylvania","doll","film","danny","melted","exchange","instant","tune","solar","attempt","silly","explanation","promised","slight","heading","vessels","august","donkey","slip","exist","grandmother","shaking","egypt","mission","vapor","fort","casey","illinois","thumb","happily","autumn","memory","garage","toy","nuts","selection","lee","remarkable","mathematics","kids","shake","fireplace","neighborhood","mysterious","ourselves","pride","folks","cookies","habit","recall","manufacturing","cast","norway","deeply","label","independent","tales","chose","require","mill","simplest","palace","possibly","soap","constantly","stiff","damage","official","lungs","shout","harry","university","ellen","slope","january","relationship","positive","rush","plates","mount","sale","satisfied","practical","scared"]
-
-
-
-var answer_para = document.getElementById("answer");
-var mistakes_div = document.getElementById("mistakes")
-var seconds = document.getElementById("countdown");
-var lose_para = document.getElementById("lose");
-var correct = 0;
-var numWrong = 0;
-
-function randomWord(options) {
-	let word = options[Math.floor(Math.random() * options.length)];
-	return word;
-}
-
-var word = randomWord(word_options);
-
-function wordMarking(word) {
-	marking = word.replace(/[a-z]/g, '_ ');
-	answer_para.innerHTML = marking
-}
-
-wordMarking(word);
-
-
-function win() {
-
-}
-
-
-function lose(word) {
-	lose_para.innerHTML = "Hangman! you lose :/, the answer is: "
-	answer_para.innerHTML = word;
-}
-
-function guessHandler(letter, word) {
-	separated = word.split("");
-	if (word.includes(letter) == true ) {
-		answer_para.innerHTML = letter;
-		letter.shift();
-	}
-	else {
-		numWrong++
-		incorrect_guesses(numWrong)
-		letter.shift();
-	}
-}
-
-
-// Handling clicks for each letter
-var letter = [];
-
-$("#A").click(function() {
-	letter.push("a");
-	guessHandler(letter,word);
-});
-$("#B").click(function() {
-	letter.push("b");
-	guessHandler(letter,word);
-});
-$("#C").click(function() {
-	letter.push("c");
-	guessHandler(letter,word);
-});
-$("#D").click(function() {
-	letter.push("d");
-	guessHandler(letter,word);
-});
-$("#E").click(function() {
-	letter.push("e");
-	guessHandler(letter,word);
-});
-$("#F").click(function() {
-	letter.push("f");
-	guessHandler(letter,word);
-});
-$("#G").click(function() {
-	letter.push("g");
-	guessHandler(letter,word);
-});
-$("#H").click(function() {
-	letter.push("h");
-	guessHandler(letter,word);
-});
-$("#I").click(function() {
-	letter.push("i");
-	guessHandler(letter,word);
-});
-$("#J").click(function() {
-	letter.push("j");
-	guessHandler(letter,word);
-});
-$("#K").click(function() {
-	letter.push("k");
-	guessHandler(letter,word);
-});
-$("#L").click(function() {
-	letter.push("l");
-	guessHandler(letter,word);
-});
-$("#M").click(function() {
-	letter.push("m");
-	guessHandler(letter,word);
-});
-$("#N").click(function() {
-	letter.push("n");
-	guessHandler(letter,word);
-});
-$("#O").click(function() {
-	letter.push("o");
-	guessHandler(letter,word);
-});
-$("#P").click(function() {
-	letter.push("p");
-	guessHandler(letter,word);
-});
-$("#Q").click(function() {
-	letter.push("q");
-	guessHandler(letter,word);
-});
-$("#R").click(function() {
-	letter.push("r");
-	guessHandler(letter,word);
-});
-$("#S").click(function() {
-	letter.push("s");
-	guessHandler(letter,word);
-});
-$("#T").click(function() {
-	letter.push("t");
-	guessHandler(letter,word);
-});
-$("#U").click(function() {
-	letter.push("u");
-	guessHandler(letter,word);
-});
-$("#V").click(function() {
-	letter.push("v");
-	guessHandler(letter,word);
-});
-$("#W").click(function() {
-	letter.push("w");
-	guessHandler(letter,word);
-});
-$("#X").click(function() {
-	letter.push("x");
-	guessHandler(letter,word);
-});
-$("#Y").click(function() {
-	letter.push("y");
-	guessHandler(letter,word);
-});
-$("#Z").click(function() {
-	letter.push("z");
-	guessHandler(letter,word);
-});
-
 // Hangman game canvas - Drawn after each incorrect guess
 function incorrect_guesses(num) {
 
@@ -280,6 +121,208 @@ function incorrect_guesses(num) {
 
 }
 
+
+
+// Hangman game
+var word_options = ["hunter","satellites","trap","acres","poetry","calm","shallow","monkey","rocky","grabbed","swung","tobacco","rhyme","occasionally","wealth","species","claws","philadelphia","brick","adult","depth","treated","breeze","spin","martin","facing","customs","floating","essential","discussion","coach","advice","contrast","rubbed","zoo","arrangement","canal","border","policeman","wolf","image","finest","pennsylvania","doll","film","danny","melted","exchange","instant","tune","solar","attempt","silly","explanation","promised","slight","heading","vessels","august","donkey","slip","exist","grandmother","shaking","egypt","mission","vapor","fort","casey","illinois","thumb","happily","autumn","memory","garage","toy","nuts","selection","lee","remarkable","mathematics","kids","shake","fireplace","neighborhood","mysterious","ourselves","pride","folks","cookies","habit","recall","manufacturing","cast","norway","deeply","label","independent","tales","chose","require","mill","simplest","palace","possibly","soap","constantly","stiff","damage","official","lungs","shout","harry","university","ellen","slope","january","relationship","positive","rush","plates","mount","sale","satisfied","practical","scared"]
+
+
+
+var answer_para = document.getElementById("answer");
+var mistakes_div = document.getElementById("mistakes")
+var seconds = document.getElementById("countdown");
+var comment_para = document.getElementById("comment");
+var correct = 0;
+var numWrong = 0;
+var letter = [];
+var correct_letters = []
+var wrong_letters = []
+
+function randomWord(options) {
+	let word = options[Math.floor(Math.random() * options.length)];
+	return word;
+}
+
+var word = randomWord(word_options);
+
+function wordMarking(word) {
+	// marking = word.replace(/[a-z]/g, '_ ');
+	for (var j = 0; j < word.length; j++) {
+		correct_letters.push('_ ')
+	}
+	answer_para.innerHTML = correct_letters.join('')
+}
+
+wordMarking(word);
+
+
+function win() {
+	comment_para.innerHTML = "Congratulations! You have won!"
+}
+
+
+function lose(word) {
+	comment_para.innerHTML = "Hangman! you lose :/, the answer is: "
+	answer_para.innerHTML = word;
+}
+
+
+
+function guessHandler(letter, word) {
+	// Function decides where a users guess is correct or not and directs to appropriate function.
+
+	if (word.includes(letter) == true) {
+		correctGuess(letter, word);
+	}
+	else {
+		numWrong++
+		incorrect_guesses(numWrong)
+		letter.pop();
+	}
+}
+
+
+function correctGuess(letter, word) {
+	for (var i = 0; i < word.length; i++) {
+		if (word[i] === letter) {
+			correct_letters[i] = letter;
+			answer_para.innerHTML = correct_letters.join('');
+		}
+	}	
+}
+
+// Handling clicks for each letter
+
+$("#A").click(function() {
+	letter.push("a");
+	guessHandler(letter,word);
+	$("#A").prop('disabled', true);
+});
+$("#B").click(function() {
+	letter.push("b");
+	guessHandler(letter,word);
+	$("#B").prop('disabled', true);
+});
+$("#C").click(function() {
+	letter.push("c");
+	guessHandler(letter,word);
+	$("#C").prop('disabled', true);
+});
+$("#D").click(function() {
+	letter.push("d");
+	guessHandler(letter,word);
+	$("#D").prop('disabled', true);
+});
+$("#E").click(function() {
+	letter.push("e");
+	guessHandler(letter,word);
+	$("#E").prop('disabled', true);
+});
+$("#F").click(function() {
+	letter.push("f");
+	guessHandler(letter,word);
+	$("#F").prop('disabled', true);
+});
+$("#G").click(function() {
+	letter.push("g");
+	guessHandler(letter,word);
+	$("#G").prop('disabled', true);
+});
+$("#H").click(function() {
+	letter.push("h");
+	guessHandler(letter,word);
+	$("#H").prop('disabled', true);
+});
+$("#I").click(function() {
+	letter.push("i");
+	guessHandler(letter,word);
+	$("#I").prop('disabled', true);
+});
+$("#J").click(function() {
+	letter.push("j");
+	guessHandler(letter,word);
+	$("#J").prop('disabled', true);
+});
+$("#K").click(function() {
+	letter.push("k");
+	guessHandler(letter,word);
+	$("#K").prop('disabled', true);
+});
+$("#L").click(function() {
+	letter.push("l");
+	guessHandler(letter,word);
+	$("#L").prop('disabled', true);
+});
+$("#M").click(function() {
+	letter.push("m");
+	guessHandler(letter,word);
+	$("#M").prop('disabled', true);
+});
+$("#N").click(function() {
+	letter.push("n");
+	guessHandler(letter,word);
+	$("#N").prop('disabled', true);
+});
+$("#O").click(function() {
+	letter.push("o");
+	guessHandler(letter,word);
+	$("#O").prop('disabled', true);
+});
+$("#P").click(function() {
+	letter.push("p");
+	guessHandler(letter,word);
+	$("#P").prop('disabled', true);
+});
+$("#Q").click(function() {
+	letter.push("q");
+	guessHandler(letter,word);
+	$("#Q").prop('disabled', true);
+});
+$("#R").click(function() {
+	letter.push("r");
+	guessHandler(letter,word);
+	$("#R").prop('disabled', true);
+});
+$("#S").click(function() {
+	letter.push("s");
+	guessHandler(letter,word);
+	$("#S").prop('disabled', true);
+});
+$("#T").click(function() {
+	letter.push("t");
+	guessHandler(letter,word);
+	$("#T").prop('disabled', true);
+});
+$("#U").click(function() {
+	letter.push("u");
+	guessHandler(letter,word);
+	$("#U").prop('disabled', true);
+});
+$("#V").click(function() {
+	letter.push("v");
+	guessHandler(letter,word);
+	$("#V").prop('disabled', true);
+});
+$("#W").click(function() {
+	letter.push("w");
+	guessHandler(letter,word);
+	$("#W").prop('disabled', true);
+});
+$("#X").click(function() {
+	letter.push("x");
+	guessHandler(letter,word);
+	$("#X").prop('disabled', true);
+});
+$("#Y").click(function() {
+	letter.push("y");
+	guessHandler(letter,word);
+	$("#Y").prop('disabled', true);
+});
+$("#Z").click(function() {
+	letter.push("z");
+	guessHandler(letter,word);
+	$("#Z").prop('disabled', true);
+});
 
 
 
