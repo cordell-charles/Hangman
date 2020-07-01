@@ -54,7 +54,7 @@ canvas.beginPath(); // Crossbar - bottom line
 
 
 // Hangman game canvas - Drawn after each incorrect guess
-function incorrect_guesses(num) {
+function hang(num) {
 
 
 	if (numWrong == 1) {
@@ -132,7 +132,7 @@ var answer_para = document.getElementById("answer");
 var mistakes_div = document.getElementById("mistakes")
 var seconds = document.getElementById("countdown");
 var comment_para = document.getElementById("comment");
-var correct = 0;
+var totalCorrect = 0;
 var numWrong = 0;
 var letter = [];
 var correct_letters = []
@@ -146,11 +146,26 @@ function randomWord(options) {
 var word = randomWord(word_options);
 
 function wordMarking(word) {
+	/*
 	// marking = word.replace(/[a-z]/g, '_ ');
 	for (var j = 0; j < word.length; j++) {
 		correct_letters.push('_ ')
 	}
 	answer_para.innerHTML = correct_letters.join('')
+	
+	*/
+	var x = word.length;
+	var y = x - 1;
+
+	while (x>0) {
+		var let = word.substring(y,x);
+		document.getElementById('letter-'+x).innerHTML = let;
+        document.getElementById('letter-'+x).style.visibility = "hidden";
+        document.getElementById('underline-'+x).style.display = "block";            
+        document.getElementById('underline-'+x).style.borderBottom = "3px solid black";
+        x--;
+        y--;
+	}
 }
 
 wordMarking(word);
@@ -162,34 +177,34 @@ function win() {
 
 
 function lose(word) {
-	comment_para.innerHTML = "Hangman! you lose :/, the answer is: "
+	comment_para.innerHTML = "Hangman! you lose :/, the answer is:"
 	answer_para.innerHTML = word;
 }
 
 
 
 function guessHandler(letter, word) {
-	// Function decides where a users guess is correct or not and directs to appropriate function.
-
-	if (word.includes(letter) == true) {
-		correctGuess(letter, word);
-	}
-	else {
-		numWrong++
-		incorrect_guesses(numWrong)
-		letter.pop();
-	}
-}
-
-
-function correctGuess(letter, word) {
-	for (var i = 0; i < word.length; i++) {
-		if (word[i] === letter) {
-			correct_letters[i] = letter;
-			answer_para.innerHTML = correct_letters.join('');
+	// Function decides whether the user has guessed correctly or not
+	var correct = 0;
+	for (var e = 0; e < word.length; e++) {
+		if (document.getElementById('letter-'+ (e+1)).innerHTML == letter) {
+			document.getElementById('letter-'+ (e+1)).style.visibility = 'visible';
+			correct++
+			totalCorrect++
+			}
 		}
-	}	
+	if (correct == 0) {
+		numWrong++
+		hang(numWrong)
+	}
+	if (totalCorrect == word.length) {
+		win()
+	}
+	letter.shift()
 }
+
+
+
 
 // Handling clicks for each letter
 
