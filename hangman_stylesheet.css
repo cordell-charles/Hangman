@@ -1,69 +1,91 @@
 * {
-	font-family: Verdana, Arial, Geneva, Arial Black;
+	font-family: bradley hand;
 }
 
 header {
 	background-color: white;
+}
+
+#heading {
 	padding: 20px;
 	color: red;
 	text-align: center;
+}
+
+#wins {
+
+}
+
+#losses {
+
 }
 
 body {
 	background-color: grey;
 }
 
-#answer {
-	font-size: 50px;
-}
 
-.mistakes {
+#mistakes {
 	text-align: right;
 }
 
-#statement {
+
+.letters{
+	margin-left: 200px;
 	text-align: center;
 }
 
-.game {
+
+#letter1, #letter2, #letter3, #letter4, #letter5, #letter6, #letter7, #letter8, #letter9, #letter10, #letter11, #letter12, #letter13, #letter14, #letter15 {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 30px;
+	margin-left: 10px;
 	text-align: center;
-}
-
-#myCanvas {
-	background: #ffffff;
-	border: 1px solid #000000;
-	text-align: center;
-}
-
-table {
-	margin-left:auto; 
-    margin-right:auto;
-}
-tr td {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-footer {
-	background-color: white;
-	text-align: center;
+	font-size: 50px;
+	line-height: 60px;
 }
 
 #underline-1, #underline-2, #underline-3, #underline-4, #underline-5, #underline-6, #underline-7, #underline-8, #underline-9, #underline-10, #underline-11, #underline-12, #underline-13, #underline-14, #underline-15 {
 	display: none;
 	float: left;
 	width: 50px;
-	height: 60px;
-	margin-right: 5px;
+	height: 50px;
+	margin-left: 10px;
+	color: blue;
+}
+
+
+.drawing{
 	text-align: center;
 }
 
-#letter1, #letter2, #letter3, #letter4, #letter5, #letter6, #letter7, #letter8, #letter9, #letter10, #letter11, #letter12, #letter13, #letter14, #letter15 {
-	width: 50px;
-	height: 60px;
-	margin-bottom: 40px;
-	text-align: center;
+#myCanvas {
+	background: #ffffff;
+	border: 1px solid #000000;
+	margin-top: 100px;
+}
+
+#answer {
 	font-size: 50px;
-	line-height: 60px;
+}
+
+
+#statement {
+	text-align: center;
+}
+
+
+table {
+	background-color: #7FFFD4;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button {
+	width: 100px;
+	height: 50px;
+	font-size: 35px;
+	background-color: grey;
+	color: white;
 }

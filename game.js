@@ -132,11 +132,13 @@ var answer_para = document.getElementById("answer");
 var mistakes_div = document.getElementById("mistakes")
 var seconds = document.getElementById("countdown");
 var comment_para = document.getElementById("comment");
+var win_span = document.getElementById("wins");
+var losses_span = document.getElementById("losses");
 var totalCorrect = 0;
 var numWrong = 0;
 var letter = [];
-var correct_letters = []
-var wrong_letters = []
+var wins = 0;
+var losses = 0;
 
 function randomWord(options) {
 	let word = options[Math.floor(Math.random() * options.length)];
@@ -172,13 +174,19 @@ wordMarking(word);
 
 
 function win() {
-	comment_para.innerHTML = "Congratulations! You have won!"
+	comment_para.innerHTML = "Congratulations! You have won!";
+	wins++;
+	win_span.innerHTML = wins;
+
+
 }
 
 
 function lose(word) {
 	comment_para.innerHTML = "Hangman! you lose :/, the answer is:"
 	answer_para.innerHTML = word;
+	losses++;
+	losses_span.innerHTML = losses
 }
 
 
