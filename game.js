@@ -129,7 +129,6 @@ var word_options = ["hunter","satellites","trap","acres","poetry","calm","shallo
 
 
 var answer_para = document.getElementById("answer");
-var mistakes_div = document.getElementById("mistakes")
 var seconds = document.getElementById("countdown");
 var comment_para = document.getElementById("comment");
 var win_span = document.getElementById("wins");
@@ -162,7 +161,7 @@ function wordMarking(word) {
 	while (x>0) {
 		var let = word.substring(y,x);
 		document.getElementById('letter-'+x).innerHTML = let;
-        document.getElementById('letter-'+x).style.visibility = "hidden";
+        // document.getElementById('letter-'+x).style.visibility = "hidden";
         document.getElementById('underline-'+x).style.display = "block";            
         document.getElementById('underline-'+x).style.borderBottom = "3px solid black";
         x--;

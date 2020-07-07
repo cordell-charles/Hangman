@@ -2,14 +2,18 @@
 	font-family: bradley hand;
 }
 
-header {
-	background-color: white;
-}
-
 #heading {
 	padding: 20px;
-	color: red;
+	font-size: 50px;
+	text-decoration: underline;
+	color: #ffffff;
 	text-align: center;
+}
+
+#scores {
+	text-align: right;
+	font-size: 15px;
+	padding-right: 40px;
 }
 
 #wins {
@@ -21,12 +25,7 @@ header {
 }
 
 body {
-	background-color: grey;
-}
-
-
-#mistakes {
-	text-align: right;
+	background-image: linear-gradient(#bdc3c7, #2c3e50);
 }
 
 
@@ -42,7 +41,6 @@ body {
 	margin-bottom: 30px;
 	margin-left: 10px;
 	text-align: center;
-	font-size: 50px;
 	line-height: 60px;
 }
 
@@ -52,7 +50,8 @@ body {
 	width: 50px;
 	height: 50px;
 	margin-left: 10px;
-	color: blue;
+	font-size: 30px;
+	color: #000000;
 }
 
 
@@ -63,7 +62,8 @@ body {
 #myCanvas {
 	background: #ffffff;
 	border: 1px solid #000000;
-	margin-top: 100px;
+	margin-top: 150px;
+	margin-right: 500px;
 }
 
 #answer {
@@ -77,15 +77,15 @@ body {
 
 
 table {
-	background-color: #7FFFD4;
+	background-color: white;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 button {
-	width: 100px;
+	width: 80px;
 	height: 50px;
 	font-size: 35px;
-	background-color: grey;
-	color: white;
+	background-color: #bdc3c7;
+	color: black;
 }
