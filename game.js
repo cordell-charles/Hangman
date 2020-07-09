@@ -133,6 +133,7 @@ var seconds = document.getElementById("countdown");
 var comment_para = document.getElementById("comment");
 var win_span = document.getElementById("wins");
 var losses_span = document.getElementById("losses");
+var nextGame_button = document.getElementById("next-game");
 var totalCorrect = 0;
 var numWrong = 0;
 var letter = [];
@@ -147,21 +148,14 @@ function randomWord(options) {
 var word = randomWord(word_options);
 
 function wordMarking(word) {
-	/*
-	// marking = word.replace(/[a-z]/g, '_ ');
-	for (var j = 0; j < word.length; j++) {
-		correct_letters.push('_ ')
-	}
-	answer_para.innerHTML = correct_letters.join('')
-	
-	*/
+
 	var x = word.length;
 	var y = x - 1;
 
 	while (x>0) {
 		var let = word.substring(y,x);
 		document.getElementById('letter-'+x).innerHTML = let;
-        // document.getElementById('letter-'+x).style.visibility = "hidden";
+        document.getElementById('letter-'+x).style.visibility = "hidden";
         document.getElementById('underline-'+x).style.display = "block";            
         document.getElementById('underline-'+x).style.borderBottom = "3px solid black";
         x--;
@@ -176,16 +170,18 @@ function win() {
 	comment_para.innerHTML = "Congratulations! You have won!";
 	wins++;
 	win_span.innerHTML = wins;
+	nextGame_button.style.display = "block";
 
 
 }
 
 
 function lose(word) {
-	comment_para.innerHTML = "Hangman! you lose :/, the answer is:"
+	comment_para.innerHTML = "You lose :/, the answer is:"
 	answer_para.innerHTML = word;
 	losses++;
 	losses_span.innerHTML = losses
+	nextGame_button.style.display = "block";
 }
 
 
@@ -211,9 +207,17 @@ function guessHandler(letter, word) {
 }
 
 
+// Handling clicks for each letter & other buttons
+
+$("#reset").click(function() {
+	location.reload();
+})
 
 
-// Handling clicks for each letter
+$("#next-game").click(function() {
+	randomWord(word_options);
+})
+
 
 $("#A").click(function() {
 	letter.push("a");

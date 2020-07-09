@@ -89,3 +89,24 @@ button {
 	background-color: #bdc3c7;
 	color: black;
 }
+
+#next-game {
+	position: relative;
+	left: 1550px;
+	top: -140px;
+	width: 200px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #34eba1;
+}
+
+#reset {
+	position: relative;
+	left: -700px;
+	top:-50px;
+	width: 150px;
+	height: 80px;
+	font-size: 40px;
+	border-radius: 50%;
+	background-color: #eb3434;
+}
