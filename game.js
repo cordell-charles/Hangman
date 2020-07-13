@@ -137,8 +137,10 @@ var nextGame_button = document.getElementById("next-game");
 var totalCorrect = 0;
 var numWrong = 0;
 var letter = [];
-var wins = 0;
-var losses = 0;
+var hangman_wins = JSON.parse(sessionStorage.getItem("hangman_wins")) || 0; 
+win_span.innerHTML = hangman_wins;
+var hangman_losses = JSON.parse(sessionStorage.getItem("hangman_losses")) || 0;
+losses_span.innerHTML = hangman_losses;
 
 function randomWord(options) {
 	let word = options[Math.floor(Math.random() * options.length)];
@@ -168,8 +170,9 @@ wordMarking(word);
 
 function win() {
 	comment_para.innerHTML = "Congratulations! You have won!";
-	wins++;
-	win_span.innerHTML = wins;
+	hangman_wins = hangman_wins + 1;
+	win_span.innerHTML = hangman_wins;
+	sessionStorage.setItem('hangman_wins', JSON.stringify(hangman_wins));
 	nextGame_button.style.display = "block";
 
 
@@ -179,8 +182,9 @@ function win() {
 function lose(word) {
 	comment_para.innerHTML = "You lose :/, the answer is:"
 	answer_para.innerHTML = word;
-	losses++;
-	losses_span.innerHTML = losses
+	hangman_losses = hangman_losses + 1;
+	losses_span.innerHTML = hangman_losses;
+	sessionStorage.setItem('hangman_losses', JSON.stringify(hangman_losses));
 	nextGame_button.style.display = "block";
 }
 
@@ -209,15 +213,14 @@ function guessHandler(letter, word) {
 
 // Handling clicks for each letter & other buttons
 
-$("#reset").click(function() {
+$("#next-game").click(function() {
 	location.reload();
 })
 
-
-$("#next-game").click(function() {
-	randomWord(word_options);
+$("#reset").click(function() {
+	sessionStorage.clear();
+	location.reload();
 })
-
 
 $("#A").click(function() {
 	letter.push("a");
